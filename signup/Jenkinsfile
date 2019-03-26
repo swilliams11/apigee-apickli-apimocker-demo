@@ -14,8 +14,10 @@ pipeline {
     }
     stages {
         stage('deploy to Apigee') {
-          withMaven(maven: 'maven3') {}
+          steps {
+            withMaven(maven: 'maven3') {}
               sh "mvn install -Dapigee.org=${params.APIGEE_ORG} -Dapigee.env=${params.APIGEE_ENV} -Dapigee.username=${env.APIGEE_CREDS_USR} -Dapigee.password=${env.APIGEE_CREDS_PSW} -DskipTests=true"
+              }
         }
     }
 }
