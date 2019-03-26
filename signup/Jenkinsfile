@@ -15,7 +15,7 @@ pipeline {
     stages {
         stage('deploy to Apigee') {
             steps {
-              sh 'mvn install -Dapigee.org=${params.APIGEE_ORG} -Dapigee.env=${params.APIGEE_ENV} -Dapigee.username=${env.APIGEE_CREDS_USR} -Dapigee.password=${env.APIGEE_CREDS_PW} -DskipTests=true'
+              sh "mvn install -Dapigee.org=${params.APIGEE_ORG} -Dapigee.env=${params.APIGEE_ENV} -Dapigee.username=${env.APIGEE_CREDS_USR} -Dapigee.password=${env.APIGEE_CREDS_PW} -DskipTests=true"
             }
         }
     }
