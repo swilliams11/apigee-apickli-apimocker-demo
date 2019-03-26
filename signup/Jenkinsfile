@@ -8,7 +8,7 @@ properties(
 )
 
 pipeline {
-    agent { any }
+    agent any
     stages {
         stage('deploy to Apigee') {
             steps {
