@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-UserRegistrationFailed">
+    <DisplayName>RF-UserRegistrationFailed</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload contentType="application/json">
+                {"fault":{"faultstring":"User registration failed.",
+                            "detail":{"errorcode":"500.10"}
+                        }
+                }</Payload>
+            <StatusCode>500</StatusCode>
+            <ReasonPhrase>Server Error</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

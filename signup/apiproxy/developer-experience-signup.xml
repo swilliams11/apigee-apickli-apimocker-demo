@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="developer-experience-signup">
+    <Basepaths>/signup</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1552502028450</CreatedAt>
+    <CreatedBy>test@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>signup</DisplayName>
+    <LastModifiedAt>1552941911523</LastModifiedAt>
+    <LastModifiedBy>test@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:489d1e65650154c308b99680e7bc4383c9e2c366b8735a944863318fc5410762799207fd297c220944f439a8fcda9cd6a50785216ab2f4c209136fec117bfbe3</ManifestVersion>
+    <Policies>
+        <Policy>AM-Response</Policy>
+        <Policy>AM-UserRegistrationAndEmailSuccessful</Policy>
+        <Policy>EV-GetTheRegistrationRequest</Policy>
+        <Policy>ML-LogRequest</Policy>
+        <Policy>RF-400BadRequest</Policy>
+        <Policy>RF-UserRegistrationFailed</Policy>
+        <Policy>SC-RegisterUser</Policy>
+        <Policy>SC-SendEmail</Policy>
+        <Policy>impose-quota</Policy>
+        <Policy>remove-header-authorization</Policy>
+        <Policy>verify-oauth-v2-access-token</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints/>
+</APIProxy>

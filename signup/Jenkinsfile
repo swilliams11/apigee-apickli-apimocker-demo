@@ -1,0 +1,21 @@
+properties(
+  [ parameters(
+    [
+      string(defaultValue: 'orgname', description: '', name: 'APIGEE_ORG', trim: false),
+      string(defaultValue: 'test', description: '', name: 'APIGEE_ENV', trim: false)
+    ])
+  ]
+)
+
+pipeline {
+    agent { docker { image 'maven:3.3.3' } }
+    stages {
+        stage('deploy to Apigee') {
+          withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '5fcb3ed4-e653-4f04-aa98-12f8fe63165a',
+            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
+            steps {
+                sh 'mvn install -Dapigee.org=${params.APIGEE_ORG} -Dapigee.env=${params.APIGEE_ENV} -Dapigee.username=$USERNAME -Dapigee.password=$PASSWORD -DskipTests=true'
+            }
+        }
+    }
+}
