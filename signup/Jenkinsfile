@@ -12,9 +12,8 @@ pipeline {
     stages {
         stage('deploy to Apigee') {
             steps {
-              withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '5fcb3ed4-e653-4f04-aa98-12f8fe63165a',
-                usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
-                sh 'mvn install -Dapigee.org=${params.APIGEE_ORG} -Dapigee.env=${params.APIGEE_ENV} -Dapigee.username=$USERNAME -Dapigee.password=$PASSWORD -DskipTests=true'
+              withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '5fcb3ed4-e653-4f04-aa98-12f8fe63165a',usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
+              sh 'mvn install -Dapigee.org=${params.APIGEE_ORG} -Dapigee.env=${params.APIGEE_ENV} -Dapigee.username=$USERNAME -Dapigee.password=$PASSWORD -DskipTests=true'
             }
         }
     }
