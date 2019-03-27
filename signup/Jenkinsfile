@@ -13,12 +13,18 @@ pipeline {
     tools {
        maven 'maven3'
        jdk 'jdk9'
+       nodejs 'Nodejs'
    }
     environment {
       APIGEE_CREDS = credentials('5fcb3ed4-e653-4f04-aa98-12f8fe63165a')
     }
     stages {
         stage('deploy to Apigee') {
+          when {
+            allOf{
+               environment name: 'SKIP_DEPLOYMENT', value: 'false'
+            }
+          }
           steps {
               sh "mvn install -Dapigee.org=${params.APIGEE_ORG} -Dapigee.env=${params.APIGEE_ENV} -Dapigee.username=${env.APIGEE_CREDS_USR} -Dapigee.password=${env.APIGEE_CREDS_PSW} -DskipTests=true -f signup/pom.xml"
           }
