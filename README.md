@@ -47,17 +47,60 @@ mvn install -Ptest -Dapigee.username=$APIGEE_UNAME -Dorg=$APIGEE_ORG -Denv=$APIG
 mvn install -Dapigee.org=$APIGEE_ORG -Dapigee.env=$APIGEE_ENV -DskipDeployment=true
 ```
 
-## Jenkins Pipeline
+## Jenkins
+### Jenkins Configuration
+You must configure Jenkins as outline below.
+* [pipeline plugin](https://wiki.jenkins.io/display/JENKINS/Pipeline+Plugin)
+* You should configure Maven, Java and NodeJS in Jenkins Global Configuration.
+
+Once you install the pipeline plugin and add Maven, Java and NodeJS as global tools, then you can create a new pipeline.  
+![multibranch](images/multibranch.png)
+
+#### signup proxy
+1. Branch sources
+* Project Repository: https://github.com/swilliams11/apigee-apickli-apimocker-demo.git
+* Credentials: enter your credentials to Github if required
+
+2. Build Configuration
+* Mode: by Jenkinsfile
+* script Path: signup/Jenkinsfile
+
+3. Scan Multibranch Pipeline triggers [OPTIONAL]
+* select `Periodically if not otherwise run`
+* Interval: 1 day
+
+
+#### auth proxy
+1. Branch sources
+* Project Repository: https://github.com/swilliams11/apigee-apickli-apimocker-demo.git
+* Credentials: enter your credentials to Github if required
+
+2. Build Configuration
+* Mode: by Jenkinsfile
+* script Path: auth/Jenkinsfile
+
+3. Scan Multibranch Pipeline triggers [OPTIONAL]
+* select `Periodically if not otherwise run`
+* Interval: 1 day
+
+#### mockbackend proxy
+1. Branch sources
+* Project Repository: https://github.com/swilliams11/apigee-apickli-apimocker-demo.git
+* Credentials: enter your credentials to Github if required
+
+2. Build Configuration
+* Mode: by Jenkinsfile
+* script Path: mockbackend/Jenkinsfile
+
+3. Scan Multibranch Pipeline triggers [OPTIONAL]
+* select `Periodically if not otherwise run`
+* Interval: 1 day
+
+
+### Jenkins Pipeline
 The Jenkins pipeline has the following parameters:
 * APIGEE_ORG
 * APIGEE_ENV
 * SKIP_DEPLOYMENT - default is false; if you only want to execute Apickli tests, then set this value to true.
 * APIGEE_API_CREDENTIALS - should be set to the base64encoded(client_id:secret)
   This should be set if your API requires an access token.
-
-## Jenkins
-There is some configuration that should be included in Jenkins.
-* [pipeline plugin](https://wiki.jenkins.io/display/JENKINS/Pipeline+Plugin)
-* You should configure Maven, Java and NodeJS in Jenkins Global Configuration.
-
-![multibranch](images/multibranch.png)
