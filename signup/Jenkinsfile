@@ -3,7 +3,8 @@ properties(
     [
       string(defaultValue: 'orgname', description: '', name: 'APIGEE_ORG', trim: false),
       string(defaultValue: 'test', description: '', name: 'APIGEE_ENV', trim: false),
-      string(defaultValue: 'false', description: '', name: 'SKIP_DEPLOYMENT', trim: false)
+      string(defaultValue: 'false', description: '', name: 'SKIP_DEPLOYMENT', trim: false),
+      string(defaultValue: 'base64Encoded_CLIENT_ID_SECRET', description: '', name: 'APIGEE_API_CREDENTIALS', trim: false)
     ])
   ]
 )

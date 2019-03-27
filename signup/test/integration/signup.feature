@@ -4,7 +4,7 @@ Feature: As a client app I would like to register a user and send an email to th
 
       Given I set body to grant_type=client_credentials
       And I set Content-Type header to application/x-www-form-urlencoded
-      And I set Authorization header to Basic BASE64ENCODE_YOUR_APIKEY_SECRET
+      And I set Authorization header to Basic `APIGEE_API_CREDENTIALS`
       When I POST to /developer-experience-auth/token
       Then I store the value of body path $.access_token as token in global scope
 
