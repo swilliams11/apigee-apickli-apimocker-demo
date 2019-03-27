@@ -9,15 +9,17 @@ properties(
 
 pipeline {
     agent any
+    tools {
+       maven 'Maven 3.6.0'
+       jdk 'jdk8'
+   }
     environment {
       APIGEE_CREDS = credentials('5fcb3ed4-e653-4f04-aa98-12f8fe63165a')
     }
     stages {
         stage('deploy to Apigee') {
           steps {
-            withMaven() {
               sh "mvn install -Dapigee.org=${params.APIGEE_ORG} -Dapigee.env=${params.APIGEE_ENV} -Dapigee.username=${env.APIGEE_CREDS_USR} -Dapigee.password=${env.APIGEE_CREDS_PSW} -DskipTests=true"
-              }
           }
         }
     }
