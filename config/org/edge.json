@@ -1,0 +1,98 @@
+{
+    "version": "1.0",
+    "envConfig": {
+        "test": {
+            "targetServers": [
+                {
+                    "name": "Enterprisetarget",
+                    "host": "example.com",
+                    "isEnabled": true,
+                    "port": 8080,
+                    "sSLInfo": {
+                        "enabled": "true",
+                        "clientAuthEnabled": "false",
+                        "ignoreValidationErrors": "false"
+                    }
+                }
+            ],
+            "virtualHosts": [
+            ],
+            "caches": [
+            ],
+            "kvms": [
+            ],
+            "extensions":[
+           ]
+        },
+        "dev": {
+            "caches": [],
+            "targetServers": []
+        }
+    },
+    "orgConfig": {
+        "maskconfigs": [
+        ],
+        "apiProducts": [
+            {
+                "name": "developer-experience-product",
+                "displayName": "developer-experience-product",
+                "description": "developer experience Product",
+                "apiResources": [
+                    "/**"
+                ],
+                "approvalType": "auto",
+                "attributes": [
+                    {
+                        "name": "developer.quota.limit",
+                        "value": "10000"
+                    },
+                    {
+                        "name": "developer.quota.interval",
+                        "value": "1"
+                    },
+                    {
+                        "name": "developer.quota.timeunit",
+                        "value": "month"
+                    }
+                ],
+                "environments": [
+                    "test"
+                ],
+                "proxies": [
+                    "developer-experience-signup",
+                    "developer-experience-mockbackend",
+                    "developer-experience-auth"
+                ],
+                "quota": "10000",
+                "quotaInterval": "1",
+                "quotaTimeUnit": "month",
+                "scopes": []
+            }
+        ],
+        "developers": [
+            {
+                "attributes": [],
+                "email": "jay@developer.com",
+                "firstName": "Jay",
+                "lastName": "Jack",
+                "userName": "hughexample"
+            }
+        ],
+        "developerApps": {
+            "jay@developer.com": [
+                {
+                    "name": "developer-experience-app",
+                    "apiProducts": [
+                        "developer-experience-product"
+                    ],
+                    "callbackUrl": "http://null",
+                    "scopes": []
+                }
+            ]
+        },
+        "kvms": [
+        ]
+    },
+    "apiConfig": {
+    }
+}
