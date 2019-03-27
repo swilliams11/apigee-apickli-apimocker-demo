@@ -1,0 +1,65 @@
+{
+    "mockDirectory": "./mock",
+    "quiet": false,
+    "port": "9000",
+    "latency": 50,
+    "logRequestHeaders": false,
+    "webServices": {
+        "": {
+            "latency": 20,
+            "verbs": ["get"],
+            "switch": ["i"],
+            "responses": {
+                "get": {"httpStatus": 200, "mockFile": "error.json"}
+            },
+            "switchResponses": {
+                "itt2294629": {"httpStatus": 200, "mockFile": "frozen.json"},
+                "itt0120338": {"httpStatus": 200, "mockFile": "titanic.json"}
+            }
+        },
+        "users/registration": {
+          "latency": 20,
+          "verbs": ["post"],
+          "switch": ["username"],
+          "responses": {
+              "post": {"httpStatus": 200, "mockFile": "post_userregistersuccess.json"}
+          },
+          "switchResponses": {
+              "usernamefail": {"httpStatus": 400, "mockFile": "invalid_userregistration.json"}
+          }
+        },
+        "users/registration/down": {
+          "latency": 30000,
+          "verbs": ["post"],
+          "responses": {
+              "post": {"httpStatus": 200, "mockFile": "post_userregistersuccess.json"}
+          }
+        },
+        "users/registration/slow": {
+          "latency": 5000,
+          "verbs": ["post"],
+          "responses": {
+              "post": {"httpStatus": 200, "mockFile": "post_userregistersuccess.json"}
+          }
+        },
+        "email/:usernameUri": {
+          "latency": 20,
+          "verbs": ["post"],
+          "switch": ["usernameUri"],
+          "responses": {
+              "post": {"httpStatus": 200, "mockFile": "email_successful.json"}
+          },
+          "switchResponses": {
+              "usernameUrifail": {"httpStatus": 400, "mockFile": "email_failed.json"}
+          }
+        },
+        "email/:username/down": {
+          "latency": 30000,
+          "verbs": ["post"],
+          "responses": {
+              "post": {"httpStatus": 503, "mockFile": "email_failed503.json"}
+          }
+        }
+
+    }
+}

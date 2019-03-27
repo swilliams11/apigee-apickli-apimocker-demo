@@ -1,0 +1,43 @@
+properties(
+  [ parameters(
+    [
+      string(defaultValue: 'orgname', description: '', name: 'APIGEE_ORG', trim: false),
+      string(defaultValue: 'test', description: '', name: 'APIGEE_ENV', trim: false),
+      string(defaultValue: 'false', description: '', name: 'SKIP_DEPLOYMENT', trim: false)
+    ])
+  ]
+)
+
+pipeline {
+    agent any
+    tools {
+       maven 'maven3'
+       jdk 'jdk9'
+       nodejs 'Nodejs'
+   }
+    environment {
+      APIGEE_CREDS = credentials('5fcb3ed4-e653-4f04-aa98-12f8fe63165a')
+    }
+    stages {
+        stage('deploy to Apigee') {
+          when {
+            allOf{
+               environment name: 'SKIP_DEPLOYMENT', value: 'false'
+            }
+          }
+          steps {
+              sh "mvn install -Dapigee.org=${params.APIGEE_ORG} -Dapigee.env=${params.APIGEE_ENV} -Dapigee.username=${env.APIGEE_CREDS_USR} -Dapigee.password=${env.APIGEE_CREDS_PSW} -DskipTests=true -f mockbackend/pom.xml"
+          }
+        }
+        stage('execute integration tests') {
+          when {
+            allOf{
+               environment name: 'SKIP_DEPLOYMENT', value: 'true'
+            }
+          }
+          steps {
+            sh "mvn install -Dapigee.org=$APIGEE_ORG -Dapigee.env=$APIGEE_ENV -DskipDeployment=true -f mockbackend/pom.xml"
+          }
+        }
+    }
+}
