@@ -2,7 +2,8 @@ properties(
   [ parameters(
     [
       string(defaultValue: 'orgname', description: '', name: 'APIGEE_ORG', trim: false),
-      string(defaultValue: 'test', description: '', name: 'APIGEE_ENV', trim: false)
+      string(defaultValue: 'test', description: '', name: 'APIGEE_ENV', trim: false),
+      string(defaultValue: 'false', description: '', name: 'SKIP_DEPLOYMENT', trim: false)
     ])
   ]
 )
@@ -20,6 +21,16 @@ pipeline {
         stage('deploy to Apigee') {
           steps {
               sh "mvn install -Dapigee.org=${params.APIGEE_ORG} -Dapigee.env=${params.APIGEE_ENV} -Dapigee.username=${env.APIGEE_CREDS_USR} -Dapigee.password=${env.APIGEE_CREDS_PSW} -DskipTests=true -f signup/pom.xml"
+          }
+        }
+        stage('execute integration tests') {
+          when {
+            allOf{
+               environment name: 'SKIP_DEPLOYMENT', value: 'true'
+            }
+          }
+          steps {
+            sh "mvn install -Dapigee.org=$APIGEE_ORG -Dapigee.env=$APIGEE_ENV -DskipDeployment=true -f signup/pom.xml"
           }
         }
     }
