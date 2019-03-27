@@ -58,4 +58,6 @@ The Jenkins pipeline has the following parameters:
 ## Jenkins
 There is some configuration that should be included in Jenkins.
 * [pipeline plugin](https://wiki.jenkins.io/display/JENKINS/Pipeline+Plugin)
-* You should configure Maven, Java and NodeJS in Jenkins Global Configuration. 
+* You should configure Maven, Java and NodeJS in Jenkins Global Configuration.
+
+![multibranch](images/multibranch.png)
