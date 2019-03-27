@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="OAuth-GenerateTokenCC" version="SHA-512:aab641992cdac9ef241f5558396bc64968172606d13179f3e630c3f99900fcdea76003e6f64f5a129ad747af3524f00f601fb2e1663096e5141d7296fe9e1ebe"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:c73743c64c3ad101822232bacfdf6d22f06336a7575f1cd1165bdf551a6460c451d2d562ac3fc033766020100d7d53c8a2b4cb44da94e54627caefe0c7fea46c"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints/>
+</Manifest>

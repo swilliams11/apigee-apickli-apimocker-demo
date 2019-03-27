@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="developer-experience-auth">
+    <Basepaths>/developer-experience-auth</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1552506611651</CreatedAt>
+    <CreatedBy>williamssean@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>developer-experience-auth</DisplayName>
+    <LastModifiedAt>1552506766267</LastModifiedAt>
+    <LastModifiedBy>williamssean@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:0a1653205ad45feafccccb42d97bb94e4c6668e81d722d027eec66cda01d4ffe6f0386412cf71bd70ee14198e240d9c87e8fd1b2fd4463e66c64864095e12ff4</ManifestVersion>
+    <Policies>
+        <Policy>OAuth-GenerateTokenCC</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints/>
+</APIProxy>
