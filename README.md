@@ -1,6 +1,6 @@
 # apigee-apickli-apimocker-demo
 
-This repository demo's apickli, Apigee Maven deployment plugin, Apigee Maven config plugin and Apigee Hosted Targets.
+This repository demo's apickli, Apigee Maven deployment plugin, Apigee Maven config plugin, Apigee Hosted Targets and Jenkins Pipeline.
 
 
 ## Deployment
@@ -54,3 +54,8 @@ The Jenkins pipeline has the following parameters:
 * SKIP_DEPLOYMENT - default is false; if you only want to execute Apickli tests, then set this value to true.
 * APIGEE_API_CREDENTIALS - should be set to the base64encoded(client_id:secret)
   This should be set if your API requires an access token.
+
+## Jenkins
+There is some configuration that should be included in Jenkins.
+* [pipeline plugin](https://wiki.jenkins.io/display/JENKINS/Pipeline+Plugin)
+* You should configure Maven, Java and NodeJS in Jenkins Global Configuration. 

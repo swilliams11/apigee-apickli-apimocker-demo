@@ -1,10 +1,11 @@
 # signup
-Apigee proxy to demo mocking/testing failed third-party services.  
+Apigee proxy to demo mocking/testing failed third-party services.  It has two service callouts that send requests to the mockbackend proxy.
 
 ## Deploy the proxy
-  1. Make sure you have Maven installed. [apigeetool](https://github.com/apigee/apigeetool-node) installed
+  1. Make sure you have Maven installed.
   2. Deploy your proxy
     ```
+    cd signup
     mvn install -Dapigee.org=$APIGEE_ORG -Dapigee.env=$APIGEE_ENV -Dapigee.username=$APIGEE_UNAME -Dapigee.password=$APIGEE_PW -DskipTests=true
     ```
 
@@ -13,8 +14,6 @@ Apigee proxy to demo mocking/testing failed third-party services.
       ```
       mvn install -Dapigee.org=$APIGEE_ORG -Dapigee.env=$APIGEE_ENV -DskipDeployment=true
       ```
-
-  For more insight into Hosted Targets and Apigee, visit our [documentation](https://docs.apigee.com/api-platform/hosted-targets/hosted-targets-overview.html).
 
 # Ask the community
 
