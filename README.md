@@ -46,3 +46,11 @@ mvn install -Ptest -Dapigee.username=$APIGEE_UNAME -Dorg=$APIGEE_ORG -Denv=$APIG
 ```
 mvn install -Dapigee.org=$APIGEE_ORG -Dapigee.env=$APIGEE_ENV -DskipDeployment=true
 ```
+
+## Jenkins Pipeline
+The Jenkins pipeline has the following parameters:
+* APIGEE_ORG
+* APIGEE_ENV
+* SKIP_DEPLOYMENT - default is false; if you only want to execute Apickli tests, then set this value to true.
+* APIGEE_API_CREDENTIALS - should be set to the base64encoded(client_id:secret)
+  This should be set if your API requires an access token.
