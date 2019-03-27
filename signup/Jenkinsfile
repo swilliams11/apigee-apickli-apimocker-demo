@@ -10,8 +10,8 @@ properties(
 pipeline {
     agent any
     tools {
-       maven 'Maven 3.6.0'
-       jdk 'jdk8'
+       maven 'maven3'
+       jdk 'jdk9'
    }
     environment {
       APIGEE_CREDS = credentials('5fcb3ed4-e653-4f04-aa98-12f8fe63165a')
