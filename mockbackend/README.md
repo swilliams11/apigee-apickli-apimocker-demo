@@ -1,12 +1,12 @@
-# API Mocker for two services Employee Registration Service and Email Service
+# Mockbackend
 
-API Mocker
+This backend use API Mocker as a Hosted Target in Apigee Edge.  It does not have any policies included on the proxy.  
 
 ## Test the app locally
   Before pushing to Apigee, it can be useful to test the application locally first to make sure everything is working as it should.
 
   1. Make sure you have [Nodejs](https://nodejs.org/en/download/) installed
-  2. Installl dependencies:
+  2. Install dependencies:
 
       ```
       cd apiproxy/resources/hosted
@@ -19,14 +19,15 @@ API Mocker
       PORT=8081 node index.js
       ```
 
-  4. Test the applicaiton:
+  4. Test the application:
 
       ```
-      curl http://localhost:8081
-      {"hello":"Hello World!"}
+      curl http://localhost:8081/
+      ```
 
-      curl http://localhost:8081/hello/user
-      {"hello":"hello user"}
+      Response:
+      ```
+      {"msg":"Hello!"}
       ```
 
   5. Remove node_modules and package-lock.json:
@@ -44,37 +45,20 @@ API Mocker
 
 ## Deploy the proxy
   1. Make sure you have [apigeetool](https://github.com/apigee/apigeetool-node) installed
-  2. Make sure you have [get_token](https://apidocs.apigee.com/api-reference/content/using-oauth2-security-apigee-edge-management-api) script installed
+  2. [OPTIONAL] Make sure you have [get_token](https://apidocs.apigee.com/api-reference/content/using-oauth2-security-apigee-edge-management-api) script installed
   3. Deploy your proxy:
 
       ```
-      get_token && apigeetool deployproxy \
-      -o <apigee org> \
-      -e <apigee env> \
-      --json \
-      --token "$(< ~/.sso-cli/valid_token.dat)" \
-      --api node-hosted-express \
-      --directory .
+      mvn install -Dapigee.username=$APIGEE_UNAME -Dapigee.org=$APIGEE_ORG -Dapigee.env=$APIGEE_ENV -Dapigee.password=$APIGEE_PW -DskipTests=true
       ```
       **Note**: This step might take a minute or two to work
 
   4. Test your proxy deployment:
 
       ```
-      curl https:/<apigee org>-<apigee env>.apigee.net/node-hosted-express
+      curl https://<apigee org>-<apigee env>.apigee.net/mockbackend
       ```
 
-  5. Undeploy your proxy:
-
-      ```
-      get_token && apigeetool undeploy \
-      -o <apigee org> \
-      -e <apigee env> \
-      --json \
-      --token "$(< ~/.sso-cli/valid_token.dat)" \
-      --api node-hosted-express \
-      --revision <revision to undeploy e.g 1>
-      ```
 
   For more insight into Hosted Targets and Apigee, visit our [documentation](https://docs.apigee.com/api-platform/hosted-targets/hosted-targets-overview.html).
 
